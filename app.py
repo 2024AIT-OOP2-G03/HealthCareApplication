@@ -15,7 +15,7 @@ def index():
     cal = calendar.Calendar(firstweekday=6)
     month_days = cal.monthdayscalendar(year, month)
 
-    return render_template('Home.html', year=year, month=month, month_days=month_days)
+    return render_template('test.html', year=year, month=month, month_days=month_days)
 
 if __name__ == '__main__':
     app.run(debug=True)
