@@ -17,5 +17,8 @@ def index():
 
     return render_template('test.html', year=year, month=month, month_days=month_days)
 
+@app.route('/Day_data')
+def contact():
+    return render_template('Day_data.html')
 if __name__ == '__main__':
     app.run(debug=True)
