@@ -1,8 +1,12 @@
 from flask import Flask, render_template
 import calendar
 from datetime import datetime
+from routes import blueprints
 
 app = Flask(__name__)
+
+for blueprint in blueprints:
+    app.register_blueprint(blueprint)
 
 @app.route('/')
 def index():
@@ -14,11 +18,9 @@ def index():
     # カレンダーを作成
     cal = calendar.Calendar(firstweekday=6)
     month_days = cal.monthdayscalendar(year, month)
+    #home.htmlに何かをを返したいのであれば、以下を編集すると良いかも
 
-    return render_template('test.html', year=year, month=month, month_days=month_days)
+    return render_template('home.html', year=year, month=month, month_days=month_days)
 
-@app.route('/Day_data')
-def contact():
-    return render_template('Day_data.html')
 if __name__ == '__main__':
     app.run(debug=True)
