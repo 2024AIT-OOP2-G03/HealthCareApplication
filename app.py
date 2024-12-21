@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 import calendar
 from datetime import datetime
 from routes import blueprints
@@ -22,7 +22,5 @@ def index():
 
     return render_template('home.html', year=year, month=month, month_days=month_days)
 
-
-    
 if __name__ == '__main__':
     app.run(debug=True)
