@@ -40,8 +40,9 @@
                         {% if day == 0 %}
                         <td></td>
                         {% else %}
-                        <!--routesフォルダの中のhome.pyで定義されているday_dataを呼び出している。-->
-                        <td><a href="{{ url_for('home.day_data') }}">{{ day }}</a></td>
+                        <!--routesフォルダの中のhome.pyで定義されているday_dataを呼び出している。
+                        date = day で　{{ day }}　の数字を取得しdataに格納-->
+                        <td><a href="{{ url_for('home.day_data', data=day) }}">{{ day }}</a></td>
                         {% endif %}
                     {% endfor %}
                 </tr>
