@@ -1,6 +1,6 @@
 # from .user import user_bp
 # from .order import order_bp
-from .home import home_bp
+from .Home import home_bp
 
 
 # Blueprintをリストとしてまとめる
