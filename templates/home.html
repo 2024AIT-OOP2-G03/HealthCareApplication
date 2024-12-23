@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>カレンダー</title>
@@ -42,7 +42,7 @@
                         {% else %}
                         <!--routesフォルダの中のhome.pyで定義されているday_dataを呼び出している。
                         date = day で　{{ day }}　の数字を取得しdataに格納-->
-                        <td><a href="{{ url_for('home.day_data', data=day) }}">{{ day }}</a></td>
+                        <td><a href="{{ url_for('day_data.day_data', data=day) }}">{{ day }}</a></td>
                         {% endif %}
                     {% endfor %}
                 </tr>

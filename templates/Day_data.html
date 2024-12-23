@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>日付選択後のページ</title>
@@ -8,12 +8,12 @@
     <h1>{{ day }}日のデータ</h1>
     <ul>
         <ul style="list-style-position: inside; margin: 0; padding: 0;">
-          <li><a href="diary.html">日記</a></li>
-          <li><a href="Today's Mood.html">今日の気分</a></li>
-          <li><a href="meal.html">食べたもの</a></li>
-          <li><a href="ToDo.html">ToDoリスト</a></li>
-          <li><a href="sleep.html">起床・就寝/睡眠時間</a></li>
-          <li><a href="weight.html">体重</a></li>
+          <li><a href= "{{ url_for('diary.diary')}}">日記</a></li>
+          <li><a href= "{{ url_for('mood.mood')}}">今日の気分</a></li>
+          <li><a href= "{{ url_for('meal.meal')}}">食べたもの</a></li>
+          <li><a href= "{{ url_for('todo.todo')}}">ToDoリスト</a></li>
+          <li><a href= "{{ url_for('sleep.sleep')}}">起床・就寝/睡眠時間</a></li>
+          <li><a href= "{{ url_for('weight.weight')}}">体重</a></li>
       </ul>
     </ul>
 </body>
