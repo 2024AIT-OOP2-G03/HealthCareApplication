@@ -2,25 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>データ</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            width: 14.28%; /* 7列なので100%を7で割る */
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <title>日付選択後のページ</title>
 </head>
 <body>
-   <p>データページ<p>
+    <h1>{{ day }}日のデータ</h1>
     <ul>
         <ul style="list-style-position: inside; margin: 0; padding: 0;">
           <li><a href="diary.html">日記</a></li>
@@ -29,8 +14,7 @@
           <li><a href="ToDo.html">ToDoリスト</a></li>
           <li><a href="sleep.html">起床・就寝/睡眠時間</a></li>
           <li><a href="weight.html">体重</a></li>
-        </ul>
-      
+      </ul>
     </ul>
 </body>
 </html>
