@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template ,request
 
 # Blueprintを作成
-home_bp = Blueprint('home', __name__, url_prefix='/home')
+day_data_bp = Blueprint('day_data', __name__, url_prefix='/day_data')
 
-@home_bp.route('/')
+@day_data_bp.route('/')
 def day_data():
     # 日付を取得
     day = request.args.get('data')
