@@ -1,9 +1,13 @@
 from flask import Flask, render_template, request
+from models import initialize_database
 import calendar
 from datetime import datetime
 from routes import blueprints
 
 app = Flask(__name__)
+
+# データベースの初期化
+initialize_database()
 
 for blueprint in blueprints:
     app.register_blueprint(blueprint)
