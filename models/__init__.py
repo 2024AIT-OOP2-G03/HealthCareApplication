@@ -1,9 +1,11 @@
 from peewee import SqliteDatabase
 from .db import db
-from.Weight import Weight
+from .ToDo import ToDo
+from .Weight import Weight
 
 MODELS = [
-    Weight,
+    ToDo,
+    Weight
 ]
 
 def initialize_database():
