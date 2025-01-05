@@ -1,9 +1,9 @@
-from peewee import Model, IntegerField
+from peewee import Model,IntegerField,FloatField
 from .db import db
-#データベース構築中
-class Customer(Model):
-    weight = IntegerField()
+
+class Weight(Model):
     day = IntegerField()
+    weight = FloatField()
 
     class Meta:
         database = db

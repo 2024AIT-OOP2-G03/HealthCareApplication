@@ -13,7 +13,7 @@
           <li><a href= "{{ url_for('meal.meal')}}">食べたもの</a></li>
           <li><a href= "{{ url_for('todo.todo')}}">ToDoリスト</a></li>
           <li><a href= "{{ url_for('sleep.sleep')}}">起床・就寝/睡眠時間</a></li>
-          <li><a href= "{{ url_for('weight.weight')}}">体重</a></li>
+          <li><a href= "{{ url_for('weight.weight',data=day)}}">体重</a></li>
       </ul>
     </ul>
 </body>
