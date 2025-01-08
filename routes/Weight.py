@@ -6,22 +6,22 @@ weight_bp = Blueprint('weight', __name__, url_prefix='/weight')
 
 @weight_bp.route('/', methods=['GET', 'POST'])
 def weight():
-    # URL パラメータから 'data'（day）を取得
+    # dataを取得してdayに保存
     day = request.args.get('data')
 
     # POST リクエストの処理
     if request.method == 'POST':
-        # フォームデータから 'weight' を取得してデータベースに保存
+        
+        #入力からweightを取得してデータベースに保存
         weight = request.form.get('weight')  
         Weight.create(day=day, weight=weight)
-        return redirect(url_for('weight.weight', data=day))  # 'data' を再設定してリダイレクト
+        return redirect(url_for('weight.weight', data=day)) 
     
-    # データベースからdayに対応するweight を取得
+    # データベースからdayに対応するweightを取得
     if day:
         record = Weight.get_or_none(Weight.day == day)
         weight = record.weight if record else "データがありません"
     else:
         weight = "日付が指定されていません"
-
-    # テンプレートをレンダリング
+        
     return render_template('Weight.html', day=day, weight=weight)
