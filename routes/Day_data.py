@@ -7,7 +7,7 @@ day_data_bp = Blueprint('day_data', __name__, url_prefix='/day_data')
 @day_data_bp.route('/')
 def day_data():
     # クエリパラメータから日付を取得
-    day = request.args.get('data')  # URLパラメータ「day」を取得
+    day = request.args.get('data') 
     weight = None
     
     if day:  
