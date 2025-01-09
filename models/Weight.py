@@ -1,7 +1,7 @@
 from peewee import Model, IntegerField
 from .db import db
 #データベース構築中
-class Customer(Model):
+class Weight(Model):
     weight = IntegerField()
     day = IntegerField()
 

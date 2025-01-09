@@ -1,9 +1,11 @@
 from peewee import SqliteDatabase
 from .db import db
-from.Weight import Weight
-from.Diary import Diary
+from .ToDo import ToDo
+from .Weight import Weight
+from .Diary import Diary
 
 MODELS = [
+    ToDo,
     Weight,
     Diary,
 ]
