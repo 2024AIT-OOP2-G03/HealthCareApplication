@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from models.Weight import Weight
 
-# Blueprint の定義
 weight_bp = Blueprint('weight', __name__, url_prefix='/weight')
 
 @weight_bp.route('/', methods=['GET', 'POST'])
@@ -9,13 +8,13 @@ def weight():
     # dataを取得してdayに保存
     day = request.args.get('data')
 
-    # POST リクエストの処理
+    # POSTリクエストの処理
     if request.method == 'POST':
         
         #入力からweightを取得してデータベースに保存
         weight = request.form.get('weight')  
         Weight.create(day=day, weight=weight)
-        return redirect(url_for('weight.weight', data=day)) 
+        return redirect(url_for('day_data.day_data', data=day)) 
     
     # データベースからdayに対応するweightを取得
     if day:
