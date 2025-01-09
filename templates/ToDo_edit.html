@@ -9,12 +9,12 @@
     <h1>ToDo編集</h1>
     <ul class="breadcrumb">
         <li><a href="{{ url_for('index') }}">HOME</a></li>
-        <li><a href="{{ url_for('day_data.day_data', data=day)}}">{{ day }}日のデータ</a></li>
-        <li><a href="{{ url_for('todo.todo', day=day) }}">ToDoリスト</a></li>
+        <li><a href="{{ url_for('day_data.day_data', year=year, month=month, data=day)}}">{{ day }}日のデータ</a></li>
+        <li><a href="{{ url_for('todo.todo', year=year, month=month, day=day) }}">ToDoリスト</a></li>
         <li>ToDoの編集</li>
     </ul>
 
-    <form action="{{ url_for('todo.edit', ToDo_id=todo.id, day=day) }}" method="post">
+    <form action="{{ url_for('todo.edit', ToDo_id=todo.id, year=year, month=month, day=day) }}" method="post">
         <label>ToDo: <input type="text" name="todo" value="{{ todo.todo }}" required></label><br>
         <label>締切日: <input type="date" name="c_day" value="{{ todo.c_day }}" required></label><br>
         <button type="submit">保存</button>

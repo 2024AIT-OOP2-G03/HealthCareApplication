@@ -6,7 +6,9 @@ day_data_bp = Blueprint('day_data', __name__, url_prefix='/day_data')
 @day_data_bp.route('/')
 def day_data():
     # 日付を取得
+    year = request.args.get('year')
+    month = request.args.get('month')
     day = request.args.get('data')
     if day:
         # 日付をDay_data.htmlに渡す
-        return render_template('Day_data.html', day = day)
+        return render_template('Day_data.html', year = year, month = month, day = day)
