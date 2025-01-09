@@ -5,9 +5,13 @@
     <title>体重</title>
 </head>
 <body>
+    <h1>{{ day }}日のデータ</h1>
     <h1>体重</h1>
-    <ul>
-        
-    </ul>
+    <form method="POST">
+        <p>今日の体重を入力：<br>
+            <input type="number" name="weight" required>
+        </p>
+        <button type="submit">更新</button>
+    </form>
 </body>
 </html>
