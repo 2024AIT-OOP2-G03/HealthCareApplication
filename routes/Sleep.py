@@ -8,7 +8,7 @@ def sleep():
     # 日付を取得
     day = request.args.get('day')
     # データ取得
-    sleeps = Sleep.select().where(ToDo.c_day.day >= int(day))
+    sleeps = Sleep.select().where(Sleep.c_day.day >= int(day))
     return render_template('sleep_list.html', title='睡眠データ', items = sleeps, day = day)
 
 @sleep_bp.route('/edit', methods=['GET', 'POST'])
@@ -16,8 +16,8 @@ def add():
     # 日付を取得
     day = request.args.get('day')
     if request.method == 'POST':
-        todo = request.form['todo']
-        c_day = request.form['c_day']
+        wakeup = request.form['wakeup']
+        gotobed = request.form['gotobed']
         ToDo.create(todo=todo, c_day=c_day)
         return redirect(url_for('todo.todo',day = day))
     

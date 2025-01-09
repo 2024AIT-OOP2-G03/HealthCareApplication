@@ -1,9 +1,10 @@
-from peewee import Model, CharField, DateField
+from peewee import Model, IntegerField,TimeField
 from.db import db
 
 class ToDo(Model):
-    todo = CharField()
-    c_day = DateField()
+    wakeup = TimeField()
+    gotobed = TimeField()
+    sleeptime = IntegerField()
 
     class Meta:
         database = db
