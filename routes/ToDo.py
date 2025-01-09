@@ -67,5 +67,5 @@ def completed(ToDo_id):
     if request.method == 'POST':
         todo.delete_instance()  # データベースから削除
         return redirect(url_for('todo.todo', year=year, month=month, day=day))
-    
+                        
     return render_template('ToDo_completed.html', todo=todo, year=year, month=month, day=day)
