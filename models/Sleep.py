@@ -1,7 +1,7 @@
 from peewee import Model, IntegerField,TimeField
 from.db import db
 
-class ToDo(Model):
+class Sleep(Model):
     wakeup = TimeField()
     gotobed = TimeField()
     sleeptime = IntegerField()
