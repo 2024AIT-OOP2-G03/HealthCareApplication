@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Blueprint, render_template, request, redirect, url_for
 from models import ToDo
 
@@ -10,7 +11,7 @@ def todo():
     month = request.args.get('month')
     day = request.args.get('day')
     # データ取得
-    todoS = ToDo.select().where((ToDo.c_day.year > int(year)) | ((ToDo.c_day.month > int(month)) | (ToDo.c_day.day >= int(day))))
+    todoS = ToDo.select().where((ToDo.c_day.year > int(year)) | ((ToDo.c_day.month > int(month)) | ((ToDo.c_day.day >= int(day))&(ToDo.a_day.day <= int(day)))))
     return render_template('ToDo_list.html', title='ToDoリスト', items = todoS, year=year, month=month, day=day)
 
 @todo_bp.route('/add', methods=['GET', 'POST'])
@@ -19,14 +20,18 @@ def add():
     year = request.args.get('year')
     month = request.args.get('month')
     day = request.args.get('day')
+    today = year + "-" + month + "-" + day
+    # 追加日
+    A_day = datetime.strptime(today, "%Y-%m-%d")
 
     if request.method == 'POST':
         todo = request.form['todo']
+        a_day = request.form['a_day']
         c_day = request.form['c_day']
-        ToDo.create(todo=todo, c_day=c_day)
+        ToDo.create(todo=todo, a_day=a_day,c_day=c_day)
         return redirect(url_for('todo.todo', year=year, month=month, day=day))
     
-    return render_template('ToDo_add.html', year=year, month=month, day=day)
+    return render_template('ToDo_add.html', year=year, month=month, day=day, A_day=A_day)
 
 @todo_bp.route('/edit/<int:ToDo_id>', methods=['GET', 'POST'])
 def edit(ToDo_id):
@@ -41,6 +46,7 @@ def edit(ToDo_id):
     
     if request.method == 'POST':
         todo.todo = request.form['todo']
+        todo.a_day = request.form['a_day']
         todo.c_day = request.form['c_day']
         todo.save()
         return redirect(url_for('todo.todo', year=year, month=month, day=day))

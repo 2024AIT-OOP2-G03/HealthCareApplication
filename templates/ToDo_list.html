@@ -15,12 +15,13 @@
         <li><a href="{{ url_for('todo.todo', year=year, month=month, day=day) }}">ToDo一覧</a></li>
 
     </ul>
-    <a href="{{ url_for('todo.add', year=year, month=month, day=day) }}">ToDo追加</a>
+    <a href="{{ url_for('todo.add', year=year, month=month, day=day, A_day=Aday) }}">ToDo追加</a>
     <table>
         <thead>
             <tr>
                 <th>&nbsp;</th>
                 <th>ToDo</th>
+                <th>追加日</th>
                 <th>締切日</th>
             </tr>
         </thead>
@@ -29,6 +30,7 @@
             <tr>
                 <td><a href="{{ url_for('todo.edit', ToDo_id=todo.id, year=year, month=month, day=day) }}">編集</a>|<a href="{{ url_for('todo.completed', ToDo_id=todo.id, year=year, month=month, day=day) }}">完了</a></td>
                 <td>{{ todo.todo }}</td>
+                <td>{{ todo.a_day }}</td>
                 <td>{{ todo.c_day }}</td>
             </tr>
             {% endfor %}

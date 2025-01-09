@@ -14,8 +14,9 @@
         <li>新しいやることを追加</li>
     </ul>
 
-    <form action="{{ url_for('todo.add', year=year, month=month, day=day) }}" method="post">
+    <form action="{{ url_for('todo.add', year=year, month=month, day=day, A_day=Aday) }}" method="post">
         <label>ToDo: <input type="text" name="todo" required></label><br>
+        <label>追加日: <input type="int" name="a_day" value="{{A_day}}" required></label><br>
         <label>締切日: <input type="date" name="c_day" required></label><br>
         <button type="submit">追加</button>
     </form>

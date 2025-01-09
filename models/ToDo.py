@@ -3,6 +3,7 @@ from.db import db
 
 class ToDo(Model):
     todo = CharField()
+    a_day = DateField()
     c_day = DateField()
 
     class Meta:
