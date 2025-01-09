@@ -2,12 +2,19 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>食べたもの</title>
+    <title>今日食べたもの</title>
 </head>
 <body>
-    <h1>食べたもの</h1>
-    <ul>
-        
-    </ul>
+    <h1>{{ day }}日のデータ</h1>
+    <h1>今日食べたもの</h1>
+    <form method="POST">
+        <p>今日食べたものを入力：<br>
+            <input type="text" name="name" required>
+        </p>
+        <p>今日食べた物のカロリー（kcal）を入力：<br>
+            <input type="number" name="calorie" required>
+        </p>
+        <button type="submit">更新</button>
+    </form>
 </body>
 </html>
