@@ -20,4 +20,4 @@ def day_data():
             weight = None
 
         # Day_data.html にデータを渡す
-    return render_template('Day_data.html', day=day, weight=weight)
+    return render_template('Day_data.html', day=day, weight = weight )

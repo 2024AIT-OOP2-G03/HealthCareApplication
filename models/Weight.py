@@ -7,3 +7,4 @@ class Weight(Model):
 
     class Meta:
         database = db
+        
