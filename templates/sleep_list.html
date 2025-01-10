@@ -10,12 +10,11 @@
     <ul class="breadcrumb">
         <li><a href="{{ url_for('index') }}">HOME</a></li>
         <li><a href="{{ url_for('day_data.day_data', data=day)}}">{{ day }}日のデータ</a></li>
-        <li><a href="{{ url_for('todo.todo', day=day)}}">睡眠</a></li>
+        <li><a href="{{ url_for('sleep.sleep', day=day)}}">睡眠</a></li>
     </ul>
-        <li><a href="{{ url_for('todo.todo', day=day) }}">睡眠データ</a></li>
-        <!-- todo.todo系多数あり　編集すること -->
+        <li><a href="{{ url_for('sleep.sleep', day=day) }}">睡眠データ</a></li>
     </ul>
-    <a href="{{ url_for('sleep.edit', day=day) }}">睡眠記録</a>
+    <a href="{{ url_for('sleep.edit', sleep=sleep, day=day) }}">睡眠記録</a>
     <table>
         <thead>
             <tr>
@@ -26,13 +25,19 @@
             </tr>
         </thead>
         <tbody>
-            {% for todo in items %}
-            <tr>
-                <td>{{ todo.todo }}</td>
-                <td>{{ todo.c_day }}</td>
-                <td>{{ todo.c_day }}</td>
-            </tr>
-            {% endfor %}
+            {% if items %}
+                {% for sleep in items %}
+                <tr>
+                    <td>{{ sleep.wakeup }}</td>
+                    <td>{{ sleep.gotobed }}</td>
+                    <td>{{ sleep.sleeptime }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3">データ未記入</de-ta></td>
+                </tr>
+            {% endif %}
         </tbody>
     </table>
 </body>
