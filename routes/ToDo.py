@@ -11,7 +11,7 @@ def todo():
     month = request.args.get('month')
     day = request.args.get('day')
     # データ取得
-    todoS = ToDo.select().where((ToDo.c_day.year > int(year)) | ((ToDo.c_day.month > int(month)) | ((ToDo.c_day.day >= int(day))&(ToDo.a_day.day <= int(day)))))
+    todoS = ToDo.select().where(((ToDo.c_day.year > int(year))&(ToDo.a_day.day <= int(day))) | (((ToDo.c_day.month > int(month))&(ToDo.a_day.day <= int(day))) | ((ToDo.c_day.day >= int(day))&(ToDo.a_day.day <= int(day)))))
     return render_template('ToDo_list.html', title='ToDoリスト', items = todoS, year=year, month=month, day=day)
 
 @todo_bp.route('/add', methods=['GET', 'POST'])
