@@ -7,6 +7,8 @@ day_data_bp = Blueprint('day_data', __name__, url_prefix='/day_data')
 @day_data_bp.route('/')
 def day_data():
     # クエリパラメータから日付を取得
+    year = request.args.get('year')
+    month = request.args.get('month')
     day = request.args.get('data') 
     weight = None
     
@@ -20,4 +22,4 @@ def day_data():
             weight = None
 
         # Day_data.html にデータを渡す
-    return render_template('Day_data.html', day=day, weight = weight )
+    return render_template('Day_data.html', year = year, month = month, day=day, weight = weight )
