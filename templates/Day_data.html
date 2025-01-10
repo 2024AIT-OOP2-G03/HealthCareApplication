@@ -17,7 +17,7 @@
           <li><a href= "{{ url_for('mood.mood')}}">今日の気分</a></li>
           <li><a href= "{{ url_for('meal.meal')}}">食べたもの</a></li>
           <li><a href= "{{ url_for('todo.todo', year=year, month=month, day=day)}}">ToDoリスト</a></li>
-          <li><a href= "{{ url_for('sleep.sleep')}}">起床・就寝/睡眠時間</a></li>
+          <li><a href= "{{ url_for('sleep.sleep',day=day)}}">起床・就寝/睡眠時間</a></li>
           <li><a href= "{{ url_for('weight.weight',data=day)}}">体重</a></li>
 
           <!--各項目の表示-->
