@@ -3,15 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>日記</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
+    <title>{{ day }}の日記編集</title>
 </head>
 
 <body>
-    <h1>{{day}}日記</h1>
-    <ul>
+    <h1>日記編集</h1>
+    <ul class="breadcrumb">
         <li><a href="{{ url_for('index') }}">HOME</a></li>
         <li><a href="{{ url_for('day_data.day_data', data=day)}}">{{ day }}日のデータ</a></li>
+        <li><a href="{{ url_for('diary.diary', day=day) }}">{{ day }}日の日記</a></li>
+        <li>日記編集</li>
     </ul>
+
+    <form action="{{ url_for('diary.diary', day=day) }}" method="post">
+        <label for="textarea">日記編集:</label><br>
+        <textarea id="diary" name="diary" rows="10" cols="50"></textarea><br><br>
+        <button type="submit">保存</button>
+    </form>
 </body>
 
 </html>
