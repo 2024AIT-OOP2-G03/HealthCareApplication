@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request
 from models import initialize_database
 import calendar
@@ -6,6 +7,7 @@ from routes import blueprints
 from models.__init__ import initialize_database
 
 app = Flask(__name__)
+app.secret_key = os.urandom(24)  # 24バイトのランダム文字列
 
 # データベースの初期化
 initialize_database()

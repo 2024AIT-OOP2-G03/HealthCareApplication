@@ -37,3 +37,16 @@
   .breadcrumb li:nth-last-child()::after {
     content: "";
   }
+  .messages {
+    color: red;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .messages .error {
+    color: red;
+  }
+
+  .messages .info {
+    color: blue;
+  }
