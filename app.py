@@ -3,6 +3,7 @@ from models import initialize_database
 import calendar
 from datetime import datetime
 from routes import blueprints
+from models.__init__ import initialize_database
 
 app = Flask(__name__)
 
@@ -29,4 +30,5 @@ def index():
 
     
 if __name__ == '__main__':
+    initialize_database()
     app.run(debug=True)
