@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ day }}日のToDoリスト</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
+</head>
+<body>
+    <h1>{{ day }}日の{{ title }}</h1>
+    <ul class="breadcrumb">
+        <li><a href="{{ url_for('index') }}">HOME</a></li>
+        <li><a href="{{ url_for('day_data.day_data', year=year, month=month, data=day)}}">{{ day }}日のデータ</a></li>
+        <li><a href="{{ url_for('todo.todo', year=year, month=month, day=day)}}">ToDoリスト</a></li>
+    </ul>
+        <li><a href="{{ url_for('todo.todo', year=year, month=month, day=day) }}">ToDo一覧</a></li>
+
+    </ul>
+    <a href="{{ url_for('todo.add', year=year, month=month, day=day, A_day=Aday) }}">ToDo追加</a>
+    <table>
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>ToDo</th>
+                <th>追加日</th>
+                <th>締切日</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in items %}
+            <tr>
+                <td><a href="{{ url_for('todo.edit', ToDo_id=todo.id, year=year, month=month, day=day) }}">編集</a>|<a href="{{ url_for('todo.completed', ToDo_id=todo.id, year=year, month=month, day=day) }}">完了</a></td>
+                <td>{{ todo.todo }}</td>
+                <td>{{ todo.a_day }}</td>
+                <td>{{ todo.c_day }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
