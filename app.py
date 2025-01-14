@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import calendar
 from datetime import datetime
 from routes import blueprints
+from models import initialize_database
 
 app = Flask(__name__)
 

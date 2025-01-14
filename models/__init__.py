@@ -1,9 +1,11 @@
 from peewee import SqliteDatabase
 from .db import db
-from.Weight import Weight
+from models.Weight import Weight
+from.Mood import Mood
 
 MODELS = [
     Weight,
+    Mood
 ]
 
 def initialize_database():
