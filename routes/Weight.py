@@ -6,6 +6,8 @@ weight_bp = Blueprint('weight', __name__, url_prefix='/weight')
 @weight_bp.route('/', methods=['GET', 'POST'])
 def weight():
     # 日付を取得してdayに保存
+    year = request.args.get('year')
+    month = request.args.get('month')
     day = request.args.get('data')
 
     # POSTリクエストの処理
@@ -23,7 +25,7 @@ def weight():
             else:
                 # レコードが存在しない場合は新規作成
                 Weight.create(day=day, weight=weight)
-        return redirect(url_for('day_data.day_data', data=day))
+        return redirect(url_for('day_data.day_data', year=year, month=month, data=day))
 
     # データベースからdayに対応するweight を取得
     if day:

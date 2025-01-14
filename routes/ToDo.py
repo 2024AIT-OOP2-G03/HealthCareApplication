@@ -48,9 +48,6 @@ def edit(ToDo_id):
     year = request.args.get('year')
     month = request.args.get('month')
     day = request.args.get('day')
-    today = year + "-" + month + "-" + day
-    # 追加日(選択した日)
-    A_day = datetime.strptime(today, "%Y-%m-%d").date()
 
     todo = ToDo.get_or_none(ToDo.id == ToDo_id)
     if not todo:

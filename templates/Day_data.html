@@ -18,9 +18,17 @@
           <li><a href= "{{ url_for('meal.meal')}}">食べたもの</a></li>
           <li><a href= "{{ url_for('todo.todo', year=year, month=month, day=day)}}">ToDoリスト</a></li>
           <li><a href= "{{ url_for('sleep.sleep',day=day)}}">起床・就寝/睡眠時間</a></li>
-          <li><a href= "{{ url_for('weight.weight',data=day)}}">体重</a></li>
+          <li><a href= "{{ url_for('weight.weight', year=year, month=month,data=day)}}">体重</a></li>
 
           <!--各項目の表示-->
+          <p>ToDo</p>
+          {% for todo in todo %}
+            <li>
+                <a class="todo" href="{{ url_for('todo.edit', ToDo_id=todo.id, year=year, month=month, day=day) }}">
+                {{ todo.todo }}
+                </a><br>
+            </li>
+          {% endfor %}
           <p>{{ weight }} kg</p>
       </ul>
     </ul>
