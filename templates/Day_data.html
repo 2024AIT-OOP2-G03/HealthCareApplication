@@ -16,7 +16,7 @@
     <ul>
         <ul style="list-style-position: inside; margin: 0; padding: 0;">
           <li><a href= "{{ url_for('diary.diary', day=day)}}">日記</a></li>
-          <li><a href= "{{ url_for('mood.mood')}}">今日の気分</a></li>
+          <li><a href= "{{ url_for('mood.mood',data=day)}}">今日の気分</a></li>
           <li><a href= "{{ url_for('meal.meal')}}">食べたもの</a></li>
           <li><a href= "{{ url_for('todo.todo', year=year, month=month, day=day)}}">ToDoリスト</a></li>
           <li><a href= "{{ url_for('sleep.sleep',day=day)}}">起床・就寝/睡眠時間</a></li>
@@ -35,6 +35,22 @@
           <p>{{ weight }} kg</p>
       </ul>
     </ul>
+    <h1>選択した気分</h1>
+    {% if mood=="angry" %}
+        <img src="{{ url_for('static', filename='angry.png') }}" alt="1" width="150">
+    {% elif mood=="cry" %}
+        <img src="{{ url_for('static', filename='cry.png') }}" alt="2" width="150">
+    {% elif mood=="jito" %}
+        <img src="{{ url_for('static', filename='jito.png') }}" alt="3" width="150">
+    {% elif mood=="laugh" %}
+        <img src="{{ url_for('static', filename='laugh.png') }}" alt="4" width="150">
+    {% elif mood=="odoroki" %}
+        <img src="{{ url_for('static', filename='odoroki.png') }}" alt="5" width="150">
+    {% elif mood=="smile" %}
+        <img src="{{ url_for('static', filename='smile.png') }}" alt="6" width="150">
+    {% else %}
+        <p>気分が選択されていません。</p>
+    {% endif %}
 
 </body>
 

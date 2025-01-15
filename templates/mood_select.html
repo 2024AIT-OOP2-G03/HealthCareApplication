@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>今日の気分</title>
+</head>
+<body>
+    <h1>今日の気分</h1>
+    <h2>今日の気分を以下から選択</h2>
+    <form method="POST">
+    <ul>
+        <input type="radio" id="1" value="angry" name="mood">
+        <label for="1"><img src="{{ url_for('static', filename='angry.png') }}" alt="1" width="150"></label>
+        <input type="radio" id="2" value="cry" name="mood">
+        <label for="2"><img src="{{ url_for('static', filename='cry.png') }}" alt="2" width="150"></label>
+        <input type="radio" id="3" value="jito" name="mood">
+        <label for="3"><img src="{{ url_for('static', filename='jito.png') }}" alt="3" width="150"></label>
+        <input type="radio" id="4" value="laugh" name="mood">
+        <label for="4"><img src="{{ url_for('static', filename='laugh.png') }}" alt="4" width="150"></label>
+        <input type="radio" id="5" value="odoroki" name="mood">
+        <label for="5"><img src="{{ url_for('static', filename='odoroki.png') }}" alt="5" width="150"></label>
+        <input type="radio" id="6" value="smile" name="mood">
+        <label for="6"><img src="{{ url_for('static', filename='smile.png') }}" alt="6" width="150"></label>
+    </ul>
+    <button a href="{{ url_for('day_data.day_data',mood=mood,data=day) }}">保存する</button>
+</body>
+</html>

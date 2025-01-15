@@ -1,6 +1,7 @@
 from datetime import datetime
 from flask import Blueprint, render_template, request
 from models import Diary
+from models.Mood import Mood
 from models.ToDo import ToDo
 from models.Weight import Weight
 
@@ -26,7 +27,10 @@ def day_data():
             diary = record.diary
         else:   #データが存在しない場合
             diary = "日記は未記入です"
-           
+        
+        record =Mood.get_or_none(Mood.day==day)
+        mood=record.mood if record else "データがありません"
+        
         #この日に表示されるToDoを取得
         todo = ToDo.select().where((ToDo.a_day <= Today) & (Today <= ToDo.c_day))  
 
@@ -37,6 +41,8 @@ def day_data():
             weight = record.weight
         else:  # レコードが存在しない場合
             weight = None
+    else:
+         mood="日付が指定されていません"
     
     # Day_data.html にデータを渡す
-    return render_template('Day_data.html', year=year, month=month, day=day, diary=diary, todo=todo, weight=weight )
+    return render_template('Day_data.html', year=year, month=month, day=day, diary=diary, mood=mood, todo=todo, weight=weight )
