@@ -10,13 +10,13 @@ day_data_bp = Blueprint('day_data', __name__, url_prefix='/day_data')
 
 @day_data_bp.route('/')
 def day_data():
+    # 現在の年と月を取得
+    now = datetime.now()
+    year = now.year
+    month = now.month
     # クエリパラメータから日付を取得
-    year = request.args.get('year')
-    month = request.args.get('month')
     day = request.args.get('data') 
-    today = year + "-" + month + "-" + day
-    # 追加日(選択した日)
-    Today = datetime.strptime(today, "%Y-%m-%d").date()
+    Today = datetime(year, month, int(day)).date()
     diary = None
     weight = None
     
@@ -41,8 +41,6 @@ def day_data():
             weight = record.weight
         else:  # レコードが存在しない場合
             weight = None
-    else:
-         mood="日付が指定されていません"
     
     # Day_data.html にデータを渡す
     return render_template('Day_data.html', year=year, month=month, day=day, diary=diary, mood=mood, todo=todo, weight=weight )

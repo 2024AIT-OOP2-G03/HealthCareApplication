@@ -7,8 +7,6 @@ mood_bp = Blueprint ('mood',__name__, url_prefix='/mood')
 @mood_bp.route('/', methods=['GET', 'POST'])
 def mood():
     #日にちを取得
-    year = request.args.get('year')
-    month = request.args.get('month')
     day=request.args.get('data')
     #過去のデータを取得
     if request.method == 'POST':
@@ -22,7 +20,7 @@ def mood():
                record.save()
          else:
                Mood.create(day=day,mood=mood)
-        return redirect(url_for('day_data.day_data', year=year, month=month,data=day))
+        return redirect(url_for('day_data.day_data',data=day))
 
 
 
