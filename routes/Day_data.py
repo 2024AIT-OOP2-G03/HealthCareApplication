@@ -1,4 +1,6 @@
+from datetime import datetime
 from flask import Blueprint, render_template, request
+from models.ToDo import ToDo
 from models.Weight import Weight
 
 # Blueprintを作成
@@ -10,9 +12,15 @@ def day_data():
     year = request.args.get('year')
     month = request.args.get('month')
     day = request.args.get('data') 
+    today = year + "-" + month + "-" + day
+    # 追加日(選択した日)
+    Today = datetime.strptime(today, "%Y-%m-%d").date()
     weight = None
     
-    if day:  
+    if day:
+        #この日に表示されるToDoを取得
+        todo = ToDo.select().where((ToDo.a_day <= Today) & (Today <= ToDo.c_day))  
+
         # レコードを取得（存在しない場合は None を返す）
         record = Weight.get_or_none(Weight.day == day)
 
@@ -20,6 +28,6 @@ def day_data():
             weight = record.weight
         else:  # レコードが存在しない場合
             weight = None
-
-        # Day_data.html にデータを渡す
-    return render_template('Day_data.html', year = year, month = month, day=day, weight = weight )
+    
+    # Day_data.html にデータを渡す
+    return render_template('Day_data.html', year=year, month=month, day=day, todo=todo, weight=weight )
