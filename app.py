@@ -1,6 +1,5 @@
 import os
 from flask import Flask, render_template, request
-from models import db, initialize_database
 import calendar
 from datetime import datetime
 from routes import blueprints

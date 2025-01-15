@@ -7,7 +7,3 @@ class Mood(Model):
 
     class Meta:
         database = db
-
-# テーブルの作成
-db.connect()
-db.create_tables([Mood])
