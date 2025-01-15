@@ -6,6 +6,8 @@ diary_bp = Blueprint('diary',__name__, url_prefix='/diary')
 @diary_bp.route('/', methods=['GET', 'POST'])
 def diary():
     # 日付を取得
+    year = request.args.get('year')
+    month = request.args.get('month')
     day = request.args.get('day')
 
     if request.method == 'POST':
@@ -26,9 +28,9 @@ def diary():
                     Diary.create(day=day, diary=diary)
             except Exception as e:
                 print(f"日記の保存に失敗しました: {e}")
-                return render_template('day_data.day_data', data=day)
+                return render_template('day_data.day_data', year=year, month=month, data=day)
 
-        return redirect(url_for('day_data.day_data', data=day))
+        return redirect(url_for('day_data.day_data', year=year, month=month, data=day))
     else:
         if day:
             record = Diary.get_or_none(Diary.day == day)

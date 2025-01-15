@@ -15,6 +15,9 @@ MODELS = [
 ]
 
 def initialize_database():
+    if not db.is_closed():  # 接続が開いている場合
+        db.close()  # 接続を閉じる
+        print("既存のデータベース接続を閉じました。")
     db.connect()
     db.create_tables(MODELS, safe=True)
     db.close()

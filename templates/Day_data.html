@@ -15,8 +15,8 @@
     </ul>
     <ul>
         <ul style="list-style-position: inside; margin: 0; padding: 0;">
-          <li><a href= "{{ url_for('diary.diary', day=day)}}">日記</a></li>
-          <li><a href= "{{ url_for('mood.mood',data=day)}}">今日の気分</a></li>
+          <li><a href= "{{ url_for('diary.diary', year=year, month=month, day=day)}}">日記</a></li>
+          <li><a href= "{{ url_for('mood.mood', year=year, month=month,data=day)}}">今日の気分</a></li>
           <li><a href= "{{ url_for('meal.meal')}}">食べたもの</a></li>
           <li><a href= "{{ url_for('todo.todo', year=year, month=month, day=day)}}">ToDoリスト</a></li>
           <li><a href= "{{ url_for('sleep.sleep',day=day)}}">起床・就寝/睡眠時間</a></li>
