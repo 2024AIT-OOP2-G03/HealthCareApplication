@@ -4,13 +4,13 @@ from models import db, initialize_database
 import calendar
 from datetime import datetime
 from routes import blueprints
-from models.__init__ import initialize_database
+from models import initialize_database
 from models.ToDo import ToDo
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # 24バイトのランダム文字列
 # データベースの初期化
-initialize_database()
+#initialize_database()
 
 for blueprint in blueprints:
     app.register_blueprint(blueprint)
