@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <title>日付選択後のページ</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
 </head>
+
 <body>
     <h1>{{ day }}日のデータ</h1>
     <ul class="breadcrumb">
@@ -13,7 +15,7 @@
     </ul>
     <ul>
         <ul style="list-style-position: inside; margin: 0; padding: 0;">
-          <li><a href= "{{ url_for('diary.diary')}}">日記</a></li>
+          <li><a href= "{{ url_for('diary.diary', day=day)}}">日記</a></li>
           <li><a href= "{{ url_for('mood.mood')}}">今日の気分</a></li>
           <li><a href= "{{ url_for('meal.meal')}}">食べたもの</a></li>
           <li><a href= "{{ url_for('todo.todo', year=year, month=month, day=day)}}">ToDoリスト</a></li>
@@ -21,6 +23,7 @@
           <li><a href= "{{ url_for('weight.weight', year=year, month=month,data=day)}}">体重</a></li>
 
           <!--各項目の表示-->
+          <p>{{ diary }}</p>
           <p>ToDo</p>
           {% for todo in todo %}
             <li>
@@ -32,5 +35,7 @@
           <p>{{ weight }} kg</p>
       </ul>
     </ul>
+
 </body>
+
 </html>
