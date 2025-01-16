@@ -49,8 +49,12 @@ def calculate_sleeptime(wakeup, gotobed):
     hours = int(delta // 3600)  # 時間
     minutes = int((delta % 3600) // 60)  # 分
 
+    # f文字列を使用
+    formatted_hours = f"{hours:02}"
+    formatted_minutes = f"{minutes:02}"
 
-    return f"{hours}時間{minutes}分"
+
+    return f"{formatted_hours}:{formatted_minutes}"
 
 def validate_time_format(time_str, fmt="%H:%M"):
     """時刻フォーマットを検証"""

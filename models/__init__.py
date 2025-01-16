@@ -3,11 +3,13 @@ from .db import db
 from .ToDo import ToDo
 from .Weight import Weight
 from .Sleep import Sleep
+from .Home_sleep import Home_sleep
 
 MODELS = [
     ToDo,
     Weight,
-    Sleep
+    Sleep,
+    Home_sleep
 ]
 
 def initialize_database():
