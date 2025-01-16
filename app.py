@@ -32,7 +32,7 @@ def index():
 
      # sleepグラフ用計算処理
     sleepdata = list()
-  # ToDoを日付ごとにまとめる
+    # ToDoを日付ごとにまとめる
     Atodo = {}
     Ctodo = {}
     for i in range(1, 32):
