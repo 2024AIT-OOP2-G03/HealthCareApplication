@@ -31,8 +31,8 @@ def index():
 
 
      # sleepグラフ用計算処理
-    sleepdata = list()
-  # ToDoを日付ごとにまとめる
+    sleepdata = sleep_list()
+    # ToDoを日付ごとにまとめる
     Atodo = {}
     Ctodo = {}
     for i in range(1, 32):
@@ -56,7 +56,8 @@ def index():
   
     
 
-def list():
+def sleep_list():
+    print("ここにはきたよ")
     # リスト初期化
     Home_sleep.delete().execute()
     # 各種データ取得

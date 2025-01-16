@@ -14,10 +14,27 @@ def sleep():
 def edit():
     # 日付を取得
     day = request.args.get('day')
-    sleep = Sleep.get_or_none(Sleep.date == day)
 
-    if not sleep:# データが見つからなければ
-        Sleep.create(wakeup="00:00", gotobed="00:00", sleeptime=0, date=day)
+    if day:
+            # データを取得
+            sleep = Sleep.get_or_none(Sleep.date == day)
+            if sleep:
+                # レコードが存在する場合は更新
+                sleep.wakeup = wakeup
+                sleep.gotobed = gotobed
+                sleep.save()
+            else:
+               # データが見つからなければ
+               Sleep.create(wakeup="00:00", gotobed="00:00", sleeptime=0, date=day)
+    return redirect(url_for('day_data.day_data', data=day))
+
+    # データベースからdayに対応するweight を取得
+    if day:
+        sleep = Weight.get_or_none(Weight.day == day)
+        weight = sleep.weight if sleep else "データがありません"
+    else:
+        weight = "日付が指定されていません"
+
 
     if request.method == 'POST':
         sleep.wakeup = del_second(request.form['wakeup']) #読み込んでsを消去
@@ -60,7 +77,7 @@ def validate_time_format(time_str, fmt="%H:%M"):
     """時刻フォーマットを検証"""
     from datetime import datetime
     try:
-        datetime.strptime(time_str, fmt)
+        datsetime.strptime(time_str, fmt)
         return True
     except ValueError:
         return False
