@@ -94,15 +94,16 @@
 
 
     <!--   以下体重グラフ -->
-    <canvas id="weightChart" width="200" height="100"></canvas>
+    <h2>体重の推移</h2>
+    <canvas id="weightChart" width="400" height="200"></canvas>
 
     <script>
         var days = {{ days | tojson }};
         var weights = {{ weights | tojson }};
 
         // Weightsのグラフ作成
-        var ctx = document.getElementById('weightChart').getContext('2d');
-        var weightChart = new Chart(ctx, {
+        var weight_ctx = document.getElementById('weightChart').getContext('2d');
+        var weightChart = new Chart(weight_ctx, {
             type: 'line',  // 折れ線グラフ
             data: {
                 labels: days,  // X軸に日付を設定
