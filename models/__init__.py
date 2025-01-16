@@ -5,13 +5,16 @@ from .ToDo import ToDo
 from .Weight import Weight
 from .Diary import Diary
 from .Sleep import Sleep
+from .Home_sleep import Home_sleep
 
 MODELS = [
     Mood,
     ToDo,
     Weight,
+    Sleep,
+    Home_sleep
     Diary,
-    Sleep
+
 ]
 
 def initialize_database():

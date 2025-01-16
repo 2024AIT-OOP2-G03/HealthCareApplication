@@ -20,6 +20,10 @@
             background-color: #f2f2f2;
         }
     </style>
+
+    <!-- 棒グラフ用 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
     <h1>{{ year }}年{{ month }}月のカレンダー</h1>
@@ -75,6 +79,21 @@
             {% endfor %}
         </tbody>
     </table>
+
+
+     <!-- 睡眠棒グラフ用 -->
+    <!-- PythonデータをJavaScriptに渡す -->
+    <div>
+        <h2>睡眠時間</h2>
+        <canvas id="barChart" width="400" height="200"></canvas>
+    </div>
+    <script>
+        const sleepData = JSON.parse('{{ sleepdata | tojson | safe }}');
+    </script>
+    <script src="{{ url_for('static', filename='bar-chart.js') }}"></script>
+
+
+    <!--   以下体重グラフ -->
     <canvas id="weightChart" width="200" height="100"></canvas>
 
     <script>
@@ -113,5 +132,6 @@
             }
         });
     </script>
+
 </body>
 </html>
