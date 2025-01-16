@@ -4,7 +4,8 @@ import calendar
 from datetime import datetime
 from routes import blueprints
 from models import initialize_database
-from models.ToDo import ToDo
+from models import ToDo
+from models import Weight 
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # 24バイトのランダム文字列
@@ -36,10 +37,16 @@ def index():
         Atodo[i] = list(ToDo.select().where(ToDo.a_day == today))
         Ctodo[i] = list(ToDo.select().where(ToDo.c_day == today))
     
-    return render_template('home.html', year=year, month=month, month_days=month_days, Atodo=Atodo, Ctodo=Ctodo)
+    #以下、wheightグラフを作成するためのコード
+    days = []  
+    weights = []        
+    records = Weight.select().order_by(Weight.day.asc())
+    for record in records:
+        days.append(record.day)
+        weights.append(record.weight)
+        
+    return render_template('home.html', year=year, month=month, month_days=month_days, days=days, Atodo=Atodo, Ctodo=Ctodo, weights=weights)
 
-
-    
 if __name__ == '__main__':
     initialize_database()
     app.run(debug=True)

@@ -13,6 +13,7 @@
         <li><a href="{{ url_for('index') }}">HOME</a></li>
         <li><a href="{{ url_for('day_data.day_data', data=day)}}">{{ day }}日のデータ</a></li>
     </ul>
+    
     <ul>
         <ul style="list-style-position: inside; margin: 0; padding: 0;">
           <li><a href= "{{ url_for('diary.diary', day=day)}}">日記</a></li>
