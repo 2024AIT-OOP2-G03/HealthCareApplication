@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>日付選択後のページ</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <h1>{{ day }}日のデータ</h1>
@@ -11,18 +12,61 @@
         <li><a href="{{ url_for('index') }}">HOME</a></li>
         <li><a href="{{ url_for('day_data.day_data', data=day)}}">{{ day }}日のデータ</a></li>
     </ul>
+    
     <ul>
         <ul style="list-style-position: inside; margin: 0; padding: 0;">
-          <li><a href= "{{ url_for('diary.diary')}}">日記</a></li>
-          <li><a href= "{{ url_for('mood.mood')}}">今日の気分</a></li>
-          <li><a href= "{{ url_for('meal.meal')}}">食べたもの</a></li>
-          <li><a href= "{{ url_for('todo.todo', day=day)}}">ToDoリスト</a></li>
-          <li><a href= "{{ url_for('sleep.sleep')}}">起床・就寝/睡眠時間</a></li>
-          <li><a href= "{{ url_for('weight.weight',data=day)}}">体重</a></li>
+            <li><a href= "{{ url_for('diary.diary')}}">日記</a></li>
+            <li><a href= "{{ url_for('mood.mood')}}">今日の気分</a></li>
+            <li><a href= "{{ url_for('meal.meal')}}">食べたもの</a></li>
+            <li><a href= "{{ url_for('todo.todo', day=day)}}">ToDoリスト</a></li>
+            <li><a href= "{{ url_for('sleep.sleep')}}">起床・就寝/睡眠時間</a></li>
+            <li><a href= "{{ url_for('weight.weight', data=day)}}">体重</a></li>
 
-          <!--各項目の表示-->
-          <p>{{ weight }} kg</p>
-      </ul>
+            <!-- 各項目の表示 -->
+            <p>{{ weight }} kg</p>
+        </ul>
     </ul>
+
+    <!-- 体重グラフを表示するキャンバス -->
+    <canvas id="weightChart" width="400" height="200"></canvas>
+
+    <script>
+        // Flaskから渡されたdaysとweightsのデータをJavaScriptに渡す
+        var days = {{ days | tojson }};
+        var weights = {{ weights | tojson }};
+
+        // グラフのデータ
+        var ctx = document.getElementById('weightChart').getContext('2d');
+        var weightChart = new Chart(ctx, {
+            type: 'line',  // 折れ線グラフ
+            data: {
+                labels: days,  // X軸に日付を設定
+                datasets: [{
+                    label: '体重',
+                    data: weights,  // Y軸に体重を設定
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: '日付'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: '体重 (kg)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
 </body>
 </html>
