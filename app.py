@@ -51,7 +51,7 @@ def index():
         days.append(record.day)
         weights.append(record.weight)
         
-  return render_template('home.html', year=year, month=month, month_days=month_days, days=days, Atodo=Atodo, Ctodo=Ctodo, weights=weights,sleepdata=sleepdata)
+    return render_template('home.html', year=year, month=month, month_days=month_days, days=days, Atodo=Atodo, Ctodo=Ctodo, weights=weights,sleepdata=sleepdata)
 
   
     

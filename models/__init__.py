@@ -12,7 +12,7 @@ MODELS = [
     ToDo,
     Weight,
     Sleep,
-    Home_sleep
+    Home_sleep,
     Diary,
 
 ]
