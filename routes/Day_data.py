@@ -9,9 +9,6 @@ def day_data():
     # クエリパラメータから日付を取得
     day = request.args.get('data') 
     weight = None
-    days = []  
-    weights = []  
-
     if day:  
         # レコードを取得（存在しない場合は None を返す）
         record = Weight.get_or_none(Weight.day == day)
@@ -21,9 +18,4 @@ def day_data():
         else:  # レコードが存在しない場合
             weight = None
             
-        records = Weight.select().order_by(Weight.day.asc())
-        for record in records:
-            days.append(record.day)
-            weights.append(record.weight)
-            
-    return render_template('Day_data.html', day=day, weight=weight, days=days, weights=weights)
+    return render_template('Day_data.html', day=day, weight=weight)

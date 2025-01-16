@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>日付選択後のページ</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <h1>{{ day }}日のデータ</h1>
@@ -26,47 +25,5 @@
             <p>{{ weight }} kg</p>
         </ul>
     </ul>
-
-    <!-- 体重グラフを表示するキャンバス -->
-    <canvas id="weightChart" width="400" height="200"></canvas>
-
-    <script>
-        // Flaskから渡されたdaysとweightsのデータをJavaScriptに渡す
-        var days = {{ days | tojson }};
-        var weights = {{ weights | tojson }};
-
-        // グラフのデータ
-        var ctx = document.getElementById('weightChart').getContext('2d');
-        var weightChart = new Chart(ctx, {
-            type: 'line',  // 折れ線グラフ
-            data: {
-                labels: days,  // X軸に日付を設定
-                datasets: [{
-                    label: '体重',
-                    data: weights,  // Y軸に体重を設定
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    fill: false
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: '日付'
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: '体重 (kg)'
-                        }
-                    }
-                }
-            }
-        });
-    </script>
-
 </body>
 </html>

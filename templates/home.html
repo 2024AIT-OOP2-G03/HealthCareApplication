@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>カレンダー</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         table {
             width: 100%;
@@ -49,5 +51,43 @@
             {% endfor %}
         </tbody>
     </table>
+    <canvas id="weightChart" width="200" height="100"></canvas>
+
+    <script>
+        var days = {{ days | tojson }};
+        var weights = {{ weights | tojson }};
+
+        // Weightsのグラフ作成
+        var ctx = document.getElementById('weightChart').getContext('2d');
+        var weightChart = new Chart(ctx, {
+            type: 'line',  // 折れ線グラフ
+            data: {
+                labels: days,  // X軸に日付を設定
+                datasets: [{
+                    label: '体重',
+                    data: weights,  // Y軸に体重を設定
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: '日付'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: '体重 (kg)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
