@@ -14,13 +14,13 @@
     </ul>
         <li><a href="{{ url_for('sleep.sleep', day=day) }}">睡眠データ</a></li>
     </ul>
-    <a href="{{ url_for('sleep.edit', sleep=sleep, day=day) }}">睡眠記録</a>
+    <a href="{{ url_for('sleep.edit', sleep=sleep, day=day) }}">睡眠データを記録する</a>
     <table>
         <thead>
             <tr>
                 <th>&nbsp;</th>
+                <th>昨夜の就寝時間</th>
                 <th>起床時間</th>
-                <th>就寝時間</th>
                 <th>睡眠時間</th>
             </tr>
         </thead>
@@ -28,14 +28,15 @@
             {% if items %}
                 {% for sleep in items %}
                 <tr>
-                    <td>{{ sleep.wakeup }}</td>
-                    <td>{{ sleep.gotobed }}</td>
+                    <td><a href="{{ url_for('sleep.edit', sleep=sleep, day=day) }}">編集</a></td>
+                    <td>{{ sleep.gotobed.strftime("%H:%M") }}</td>
+                    <td>{{ sleep.wakeup.strftime("%H:%M") }}</td>
                     <td>{{ sleep.sleeptime }}</td>
                 </tr>
                 {% endfor %}
             {% else %}
                 <tr>
-                    <td colspan="3">データ未記入</de-ta></td>
+                    <td colspan="4">データ未記入</de-ta></td>
                 </tr>
             {% endif %}
         </tbody>
