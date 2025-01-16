@@ -44,7 +44,31 @@
                         {% else %}
                         <!--routesフォルダの中のhome.pyで定義されているday_dataを呼び出している。
                         date = day で　{{ day }}　の数字を取得しdataに格納-->
-                        <td><a href="{{ url_for('day_data.day_data', data=day) }}">{{ day }}</a></td>
+                        <td>
+                            <a href="{{ url_for('day_data.day_data', year=year, month=month, data=day) }}">
+                                <strong>{{ day }}</strong>
+                            </a>
+                            <div style="text-align: left; margin-top: 5px;">
+                                <strong>追加:</strong><br>
+                                {% for todo in Atodo.get(day, []) %}
+                                    <li>
+                                        <a class="todo" href="{{ url_for('todo.todo', year=year, month=month, day=day) }}">
+                                            {{ todo.todo }}
+                                        </a><br>
+                                    </li>
+                                {% endfor %}
+                            </div>
+                            <div style="text-align: left; margin-top: 5px;">
+                                <strong>締切:</strong><br>
+                                {% for todo in Ctodo.get(day, []) %}
+                                    <li>
+                                        <a class="todo" href="{{ url_for('todo.todo', year=year, month=month, day=day) }}">
+                                        {{ todo.todo }}
+                                        </a><br>
+                                    </li>
+                                {% endfor %}
+                            </div>
+                        </td>
                         {% endif %}
                     {% endfor %}
                 </tr>
