@@ -44,7 +44,7 @@ def index():
     for record in records:
         days.append(record.day)
         weights.append(record.weight)
-        
+    #リクエストを送るためのコメント追加。
     return render_template('home.html', year=year, month=month, month_days=month_days, days=days, Atodo=Atodo, Ctodo=Ctodo, weights=weights)
 
 if __name__ == '__main__':
