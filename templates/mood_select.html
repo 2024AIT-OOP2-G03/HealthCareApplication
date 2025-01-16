@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>今日の気分</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
 </head>
 <body>
     <h1>今日の気分</h1>
+    <ul class="breadcrumb">
+        <li><a href="{{ url_for('index') }}">HOME</a></li>
+        <li><a href="{{ url_for('day_data.day_data', data=day)}}">{{ day }}日のデータ</a></li>
+        <li><a href="{{ url_for('mood.mood',data=day)}}">{{ day }}日の気分</a></li>
     <h2>今日の気分を以下から選択</h2>
     <form method="POST">
     <ul>
