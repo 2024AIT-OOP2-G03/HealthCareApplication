@@ -31,17 +31,17 @@
           <p>{{ diary }}</p>
           <h2>選択した気分</h2>
             {% if mood=="angry" %}
-            <img src="{{ url_for('static', filename='angry.png') }}" alt="1" width="150">
+            <img src="{{ url_for('static', filename='mood_png/angry.png') }}" alt="1" width="150">
             {% elif mood=="cry" %}
-            <img src="{{ url_for('static', filename='cry.png') }}" alt="2" width="150">
+            <img src="{{ url_for('static', filename='mood_png/cry.png') }}" alt="2" width="150">
             {% elif mood=="jito" %}
-            <img src="{{ url_for('static', filename='jito.png') }}" alt="3" width="150">
+            <img src="{{ url_for('static', filename='mood_png/jito.png') }}" alt="3" width="150">
             {% elif mood=="laugh" %}
-            <img src="{{ url_for('static', filename='laugh.png') }}" alt="4" width="150">
+            <img src="{{ url_for('static', filename='mood_png/laugh.png') }}" alt="4" width="150">
             {% elif mood=="odoroki" %}
-            <img src="{{ url_for('static', filename='odoroki.png') }}" alt="5" width="150">
+            <img src="{{ url_for('static', filename='mood_png/odoroki.png') }}" alt="5" width="150">
             {% elif mood=="smile" %}
-            <img src="{{ url_for('static', filename='smile.png') }}" alt="6" width="150">
+            <img src="{{ url_for('static', filename='mood_png/smile.png') }}" alt="6" width="150">
             {% else %}
             <p>気分が選択されていません。</p>
             {% endif %}

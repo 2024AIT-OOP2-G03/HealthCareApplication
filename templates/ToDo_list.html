@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ day }}日のToDoリスト</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/todo_list.css') }}">
 </head>
 <body>
     <h1>{{ day }}日の{{ title }}</h1>
@@ -12,10 +12,13 @@
         <li><a href="{{ url_for('day_data.day_data', year=year, month=month, data=day)}}">{{ day }}日のデータ</a></li>
         <li><a href="{{ url_for('todo.todo', year=year, month=month, day=day)}}">ToDoリスト</a></li>
     </ul>
-        <li><a href="{{ url_for('todo.todo', year=year, month=month, day=day) }}">ToDo一覧</a></li>
 
-    </ul>
-    <a href="{{ url_for('todo.add', year=year, month=month, day=day, A_day=Aday) }}">ToDo追加</a>
+    <div class="link-list">
+        <ul>
+        <li><a href="{{ url_for('todo.add', year=year, month=month, day=day, A_day=Aday) }}">ToDoを登録</a></li>
+        </ul> 
+    </div>
+    <div class="content">
     <table>
         <thead>
             <tr>
@@ -36,5 +39,6 @@
             {% endfor %}
         </tbody>
     </table>
+    </div>
 </body>
 </html>

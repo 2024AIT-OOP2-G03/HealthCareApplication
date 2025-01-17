@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>ToDo追加</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/todo_add.css') }}">
 </head>
 <body>
     <h1>ToDo追加</h1>
@@ -13,7 +13,10 @@
         <li><a href="{{ url_for('todo.todo', year=year, month=month, day=day) }}">ToDoリスト</a></li>
         <li>新しいやることを追加</li>
     </ul>
-    
+    <div class="link-list">
+    </div>
+
+    <div class="content">
     <!-- フラッシュメッセージの表示 -->
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
@@ -31,5 +34,6 @@
         <label>締切日: <input type="date" name="c_day" required></label><br>
         <button type="submit">追加</button>
     </form>
+    </div>
 </body>
 </html>
