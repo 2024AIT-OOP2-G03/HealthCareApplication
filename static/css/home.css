@@ -1,0 +1,138 @@
+/* 全体設定 */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* ヘッダーのスタイル */
+h1 {
+    background-color: #ff9900;
+    color: white;
+    padding: 15px;
+    text-align: l;
+    margin: 0;
+}
+
+.breadcrumb {
+    list-style: none;
+    padding: 10px 20px;
+    margin: 0;
+    background-color: #eee;
+    display: flex;
+}
+.breadcrumb li::after {
+    content: " > ";
+  }
+.breadcrumb li:nth-last-child()::after {
+    content: "";
+  }
+
+
+.breadcrumb li {
+    margin-right: 10px;
+}
+
+.breadcrumb li a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.breadcrumb li a:hover {
+    text-decoration: underline;
+}
+
+/* リンクリストのスタイル */
+div.link-list {
+    width: 20%; 
+    background-color: #f9f9f9; 
+    padding: 10px; 
+    position: absolute;
+    top: 128px; 
+    left: 0;
+    height: calc(100vh - 60px);
+}
+
+/* コンテンツ全体の調整 */
+.content {
+    margin-left: 20%; 
+    padding: 20px; 
+}
+
+/* リンクリストのスタイル */
+.link-list ul {
+    list-style-type: none; 
+    margin: 0;
+    padding: 0;
+}
+
+.link-list ul li {
+    margin-bottom: 10px; 
+    text-align: left;
+}
+
+/* リンクのスタイル */
+.link-list ul li a {
+    text-decoration: none; 
+    color: #333; 
+    font-size: 16px; 
+    font-weight: bold; 
+    padding: 5px 10px; 
+    display: block; 
+    border-radius: 5px; 
+}
+
+/* リンクのホバー時のスタイル */
+.link-list ul li a:hover {
+    background-color: #007bff; 
+    color: #fff;
+}
+
+h2 {
+    margin-top: 30px;
+    color: #444;
+    font-size: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* 気分の画像 */
+img {
+    display: block;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+/* ToDoリストのリンク */
+.todo {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.todo:hover {
+    text-decoration: underline;
+}
+
+.content-section {
+    background-color: #fff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 体重データ */
+.weight-data {
+    font-size: 18px;
+    color: #555;
+    font-weight: bold;
+}

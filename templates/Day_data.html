@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>日付選択後のページ</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 </head>
 
 <body>
@@ -14,15 +14,18 @@
         <li><a href="{{ url_for('day_data.day_data', data=day)}}">{{ day }}日のデータ</a></li>
     </ul>
     
-    <ul>
-        <ul style="list-style-position: inside; margin: 0; padding: 0;">
-          <li><a href= "{{ url_for('diary.diary', day=day)}}">日記</a></li>
-          <li><a href= "{{ url_for('mood.mood',data=day)}}">今日の気分</a></li>
-          <li><a href= "{{ url_for('meal.meal')}}">食べたもの</a></li>
-          <li><a href= "{{ url_for('todo.todo', year=year, month=month, day=day)}}">ToDoリスト</a></li>
-          <li><a href= "{{ url_for('sleep.sleep',day=day)}}">起床・就寝/睡眠時間</a></li>
-          <li><a href= "{{ url_for('weight.weight',data=day)}}">体重</a></li>
+    <div class="link-list">
+      <ul>
+          <li><a href="{{ url_for('diary.diary', day=day)}}">日記</a></li>
+          <li><a href="{{ url_for('mood.mood', data=day)}}">今日の気分</a></li>
+          <li><a href="{{ url_for('meal.meal')}}">食べたもの</a></li>
+          <li><a href="{{ url_for('todo.todo', year=year, month=month, day=day)}}">ToDoリスト</a></li>
+          <li><a href="{{ url_for('sleep.sleep', day=day)}}">起床・就寝/睡眠時間</a></li>
+          <li><a href="{{ url_for('weight.weight', data=day)}}">体重</a></li>
+      </ul>
+    </div>
 
+    <div class="content">
           <!--各項目の表示-->
           <h2>日記</h2>
           <p>{{ diary }}</p>
@@ -53,7 +56,7 @@
           <h2>体重</h2>
           <p>{{ weight }} kg</p>
       </ul>
-    </ul>
+    </div>
 </body>
 
 </html>
