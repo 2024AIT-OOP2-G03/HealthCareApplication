@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ day }}日の睡眠</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sleep_list.css') }}">
 </head>
+
 <body>
     <h1>{{ day }}日の{{ title }}</h1>
     <ul class="breadcrumb">
@@ -12,9 +13,14 @@
         <li><a href="{{ url_for('day_data.day_data', data=day)}}">{{ day }}日のデータ</a></li>
         <li><a href="{{ url_for('sleep.sleep', day=day)}}">睡眠</a></li>
     </ul>
-        <li><a href="{{ url_for('sleep.sleep', day=day) }}">睡眠データ</a></li>
-    </ul>
-    <a href="{{ url_for('sleep.edit', sleep=sleep, day=day) }}">睡眠データを記録する</a>
+    <div class="link-list">
+        <ul>
+            <li><a href="{{ url_for('sleep.sleep', day=day) }}">睡眠データ</a></li>
+            <li><a href="{{ url_for('sleep.edit', sleep=sleep, day=day) }}">睡眠データを記録する</a>
+        </ul>
+    </div>
+
+    <div class="content">
     <table>
         <thead>
             <tr>
@@ -41,5 +47,6 @@
             {% endif %}
         </tbody>
     </table>
+    </div>
 </body>
 </html>

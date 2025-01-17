@@ -17,6 +17,39 @@ h1 {
     margin: 0;
 }
 
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    margin-left: 20%;
+  }
+  
+th, td {
+    border: 1px solid #ddd;
+    padding: 6px;
+    text-align: left;
+  }
+  
+th {
+    background-color: #f4f4f4;
+  }
+
+th:nth-child(1), td:nth-child(1) {
+    width: 5%;  /* 最初の列の幅 */
+}
+
+th:nth-child(2), td:nth-child(2) {
+    width: 5%;  /* 2番目の列の幅 */
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 5%;  /* 3番目の列の幅 */
+}
+
+th:nth-child(4), td:nth-child(4) {
+    width: 1%;  /* 4番目の列の幅 */
+}
+
 .breadcrumb {
     list-style: none;
     padding: 10px 20px;
@@ -48,7 +81,7 @@ h1 {
 /* リンクリストのスタイル */
 div.link-list {
     width: 20%; 
-    background-color: #e9e9e9;
+    background-color: #e9e9e9; 
     padding: 10px; 
     position: absolute;
     top: 128px; 
@@ -58,7 +91,7 @@ div.link-list {
 
 /* コンテンツ全体の調整 */
 .content {
-    margin-left: 23%; 
+    margin-left: 25%; 
     padding: 20px; 
 }
 
@@ -91,48 +124,8 @@ div.link-list {
     color: #fff;
 }
 
-h2 {
-    margin-top: 30px;
-    color: #444;
-    font-size: 20px;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 5px;
-}
 
 p {
     font-size: 16px;
     margin: 10px 0;
-}
-
-/* 気分の画像 */
-img {
-    display: block;
-    margin: 10px 0;
-    border-radius: 5px;
-}
-
-/* ToDoリストのリンク */
-.todo {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.todo:hover {
-    text-decoration: underline;
-}
-
-.content-section {
-    background-color: #fff;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* 体重データ */
-.weight-data {
-    font-size: 18px;
-    color: #555;
-    font-weight: bold;
 }
