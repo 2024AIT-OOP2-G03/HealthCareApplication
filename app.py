@@ -31,7 +31,7 @@ def index():
 
 
      # sleepグラフ用計算処理
-    sleepdata = list()
+    sleepdata = sleep_list()
     # ToDoを日付ごとにまとめる
     Atodo = {}
     Ctodo = {}
@@ -56,7 +56,7 @@ def index():
   
     
 
-def list():
+def sleep_list():
     # リスト初期化
     Home_sleep.delete().execute()
     # 各種データ取得
@@ -75,9 +75,10 @@ def list():
             )
 
     # JSON変換用に辞書形式でデータを返す
+    # .order_by(Home_sleep.date.asc()でリストを日付順に並べている
     return [
         {"sleeptime": home_sleep.sleeptime, "date": home_sleep.date}
-        for home_sleep in Home_sleep.select()
+        for home_sleep in Home_sleep.select().order_by(Home_sleep.date.asc())
     ]
 
 def calculate_sleeptime(sleeps,sleeptime_h):
