@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>今日の気分</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mood_select.css') }}">
+</head>
+<body>
+    <h1>今日の気分</h1>
+    <ul class="breadcrumb">
+        <li><a href="{{ url_for('index') }}">HOME</a></li>
+        <li><a href="{{ url_for('day_data.day_data', data=day)}}">{{ day }}日のデータ</a></li>
+        <li><a href="{{ url_for('mood.mood',data=day)}}">{{ day }}日の気分</a></li>
+    </ul>
+    <div class="link-list">
+    <h2>今日の気分を登録</h2>
+    </div>
+    <div class="content">
+    <form method="POST">
+    <ul>
+        <input type="radio" id="1" value="angry" name="mood">
+        <label for="1"><img src="{{ url_for('static', filename='mood_png/angry.png') }}" alt="1" width="150"></label>
+        <input type="radio" id="2" value="cry" name="mood">
+        <label for="2"><img src="{{ url_for('static', filename='mood_png/cry.png') }}" alt="2" width="150"></label>
+        <input type="radio" id="3" value="jito" name="mood">
+        <label for="3"><img src="{{ url_for('static', filename='mood_png/jito.png') }}" alt="3" width="150"></label>
+        <input type="radio" id="4" value="laugh" name="mood">
+        <label for="4"><img src="{{ url_for('static', filename='mood_png/laugh.png') }}" alt="4" width="150"></label>
+        <input type="radio" id="5" value="odoroki" name="mood">
+        <label for="5"><img src="{{ url_for('static', filename='mood_png/odoroki.png') }}" alt="5" width="150"></label>
+        <input type="radio" id="6" value="smile" name="mood">
+        <label for="6"><img src="{{ url_for('static', filename='mood_png/smile.png') }}" alt="6" width="150"></label>
+    </ul>
+    </div>
+    <div class="button">
+    <button a href="{{ url_for('day_data.day_data',mood=mood,data=day) }}">保存する</button>
+    </div>
+</body>
+</html>

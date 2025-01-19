@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>カレンダー</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/BaseStyle.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         table {
             width: 100%;
@@ -18,9 +20,14 @@
             background-color: #f2f2f2;
         }
     </style>
+
+    <!-- 棒グラフ用 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
     <h1>{{ year }}年{{ month }}月のカレンダー</h1>
+    <div class="content">
     <table>
         <thead>
             <tr>
@@ -42,12 +49,90 @@
                         {% else %}
                         <!--routesフォルダの中のhome.pyで定義されているday_dataを呼び出している。
                         date = day で　{{ day }}　の数字を取得しdataに格納-->
-                        <td><a href="{{ url_for('day_data.day_data', data=day) }}">{{ day }}</a></td>
+                        <td>
+                            <a href="{{ url_for('day_data.day_data', year=year, month=month, data=day) }}">
+                                <strong>{{ day }}</strong>
+                            </a>
+                            <div style="text-align: left; margin-top: 5px;">
+                                <strong>追加:</strong><br>
+                                {% for todo in Atodo.get(day, []) %}
+                                    <li>
+                                        <a class="todo" href="{{ url_for('todo.todo', year=year, month=month, day=day) }}">
+                                            {{ todo.todo }}
+                                        </a><br>
+                                    </li>
+                                {% endfor %}
+                            </div>
+                            <div style="text-align: left; margin-top: 5px;">
+                                <strong>締切:</strong><br>
+                                {% for todo in Ctodo.get(day, []) %}
+                                    <li>
+                                        <a class="todo" href="{{ url_for('todo.todo', year=year, month=month, day=day) }}">
+                                        {{ todo.todo }}
+                                        </a><br>
+                                    </li>
+                                {% endfor %}
+                            </div>
+                        </td>
                         {% endif %}
                     {% endfor %}
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+
+     <!-- 睡眠棒グラフ用 -->
+    <!-- PythonデータをJavaScriptに渡す -->
+    <div>
+        <h2>睡眠時間</h2>
+        <canvas id="barChart" width="400" height="200"></canvas>
+    </div>
+    <script>
+        const sleepData = JSON.parse('{{ sleepdata | tojson | safe }}');
+    </script>
+    <script src="{{ url_for('static', filename='js/bar-chart.js') }}"></script>
+
+
+    <!--   以下体重グラフ -->
+    <h2>体重の推移</h2>
+    <canvas id="weightChart" width="400" height="200"></canvas>
+
+    <script>
+        var days = {{ days | tojson }};
+        var weights = {{ weights | tojson }};
+
+        // Weightsのグラフ作成
+        var weight_ctx = document.getElementById('weightChart').getContext('2d');
+        var weightChart = new Chart(weight_ctx, {
+            type: 'line',  // 折れ線グラフ
+            data: {
+                labels: days,  // X軸に日付を設定
+                datasets: [{
+                    label: '体重',
+                    data: weights,  // Y軸に体重を設定
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: '日付'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: '体重 (kg)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</div>
 </body>
 </html>
