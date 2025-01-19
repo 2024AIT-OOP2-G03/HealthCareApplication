@@ -34,15 +34,10 @@ def day_data():
         
         record =Mood.get_or_none(Mood.day==day)
         mood=record.mood if record else "データがありません"
-        
-        # レコードを取得（存在しない場合は None を返す）
-        record = Meal.get_or_none(Meal.day == day)
 
-        if record:  # レコードが存在する場合
-            meal = record.meal
-        else:  # レコードが存在しない場合
-            meal = None
-        
+        # この日に食べたものを取得
+        meal = Meal.select().where(Meal.day == day)
+
         #この日に表示されるToDoを取得
         todo = ToDo.select().where((ToDo.a_day <= Today) & (Today <= ToDo.c_day))  
 
