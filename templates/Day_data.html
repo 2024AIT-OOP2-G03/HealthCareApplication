@@ -15,13 +15,10 @@
         <ul style="list-style-position: inside; margin: 0; padding: 0;">
           <li><a href= "{{ url_for('diary.diary')}}">日記</a></li>
           <li><a href= "{{ url_for('mood.mood')}}">今日の気分</a></li>
-          <li><a href= "{{ url_for('meal.meal', data=day)}}">食べたもの</a></li>
+          <li><a href= "{{ url_for('meal.meal', day=day)}}">食べたもの</a></li>
           <li><a href= "{{ url_for('todo.todo', day=day)}}">ToDoリスト</a></li>
           <li><a href= "{{ url_for('sleep.sleep')}}">起床・就寝/睡眠時間</a></li>
           <li><a href= "{{ url_for('weight.weight')}}">体重</a></li>
-          
-          <p>食べたもの：{{ name }}</p>
-          <p>カロリー：{{ calorie }}kcal</p>
       </ul>
     </ul>
 </body>

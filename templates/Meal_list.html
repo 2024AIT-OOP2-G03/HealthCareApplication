@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ day }}日に食べたもの</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
+</head>
+<body>
+    <h1>{{ day }}日の{{ title }}</h1>
+    <ul class="breadcrumb">
+        <li><a href="{{ url_for('index') }}">HOME</a></li>
+        <li><a href="{{ url_for('day_data.day_data', data=day)}}">{{ day }}日のデータ</a></li>
+        <li><a href="{{ url_for('meal.meal', day=day)}}">食べたものリスト</a></li>
+    </ul>
+        <li><a href="{{ url_for('meal.meal', day=day) }}">食べたもの一覧</a></li>
+
+    </ul>
+    <a href="{{ url_for('meal.add', day=day) }}">食品追加</a>
+    <table>
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>食品名</th>
+                <th>カロリー（kcal）</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for meal in items %}
+            <tr>
+                <td><a href="{{ url_for('meal.edit', Meal_id=meal.id, day=day) }}">編集</a></td>
+                <td>{{ meal.meal }}</td>
+                <td>{{ meal.calorie }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

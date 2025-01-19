@@ -2,7 +2,7 @@ from peewee import SqliteDatabase
 from .db import db
 from .ToDo import ToDo
 from .Weight import Weight
-from .meal import Meal
+from .Meal import Meal
 
 MODELS = [
     ToDo,

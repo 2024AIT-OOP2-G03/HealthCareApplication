@@ -1,6 +1,6 @@
 from .Day_data import day_data_bp
 from .Diary import diary_bp
-from .meal import meal_bp
+from .Meal import meal_bp
 from .ToDo import todo_bp
 from .Weight import weight_bp
 from .Mood import mood_bp
