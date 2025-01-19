@@ -3,10 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/diary.css') }}">
     <title>{{ day }}の日記編集</title>
 </head>
-
 <body>
     <h1>日記編集</h1>
     <ul class="breadcrumb">
@@ -15,12 +14,17 @@
         <li><a href="{{ url_for('diary.diary', day=day) }}">{{ day }}日の日記</a></li>
         <li>日記編集</li>
     </ul>
+    <div class="link-list">
+    <h2>日記を登録</h2>
+    </div>
 
+    <div class="content">
     <form action="{{ url_for('diary.diary', day=day) }}" method="post">
         <label for="textarea">日記編集:</label><br>
         <textarea id="diary" name="diary" rows="10" cols="50"></textarea><br><br>
         <button type="submit">保存</button>
     </form>
+    </div>
 </body>
 
 </html>

@@ -7,8 +7,10 @@ sleep_bp = Blueprint ('sleep',__name__, url_prefix='/sleep')
 def sleep():
     # 日付を取得（指定変数名がdayだからわかりにくいが中身は月日でdateと同じ型）
     day = request.args.get('day')
-    sleeps = Sleep.select().where(Sleep.date >= int(day))
-    return render_template('sleep_list.html', title='睡眠データ', items = sleeps, day = day)
+    # sleep = Sleep.get_or_none(Sleep.date == day)　#１日のデータにたくさんの日付のデータが表示される時、使用を考える（このままだとsleepは単一のオブジェクトになるからエラー出す）
+    sleep = Sleep.select().where(Sleep.date == day)
+
+    return render_template('sleep_list.html', title='睡眠データ', items = sleep, day = day)
 
 @sleep_bp.route('/edit', methods=['GET', 'POST'])
 def edit():

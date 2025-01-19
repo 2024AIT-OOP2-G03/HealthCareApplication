@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>カレンダー</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/BaseStyle.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         table {
@@ -27,6 +27,7 @@
 </head>
 <body>
     <h1>{{ year }}年{{ month }}月のカレンダー</h1>
+    <div class="content">
     <table>
         <thead>
             <tr>
@@ -80,7 +81,6 @@
         </tbody>
     </table>
 
-
      <!-- 睡眠棒グラフ用 -->
     <!-- PythonデータをJavaScriptに渡す -->
     <div>
@@ -90,19 +90,20 @@
     <script>
         const sleepData = JSON.parse('{{ sleepdata | tojson | safe }}');
     </script>
-    <script src="{{ url_for('static', filename='bar-chart.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bar-chart.js') }}"></script>
 
 
     <!--   以下体重グラフ -->
-    <canvas id="weightChart" width="200" height="100"></canvas>
+    <h2>体重の推移</h2>
+    <canvas id="weightChart" width="400" height="200"></canvas>
 
     <script>
         var days = {{ days | tojson }};
         var weights = {{ weights | tojson }};
 
         // Weightsのグラフ作成
-        var ctx = document.getElementById('weightChart').getContext('2d');
-        var weightChart = new Chart(ctx, {
+        var weight_ctx = document.getElementById('weightChart').getContext('2d');
+        var weightChart = new Chart(weight_ctx, {
             type: 'line',  // 折れ線グラフ
             data: {
                 labels: days,  // X軸に日付を設定
@@ -132,6 +133,6 @@
             }
         });
     </script>
-
+</div>
 </body>
 </html>
