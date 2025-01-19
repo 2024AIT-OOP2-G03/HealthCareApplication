@@ -1,6 +1,10 @@
 from peewee import SqliteDatabase
 from .db import db
 from.Mood import Mood
+<<<<<<< Updated upstream
+=======
+from .meal import Meal
+>>>>>>> Stashed changes
 from .ToDo import ToDo
 from .Weight import Weight
 from .Diary import Diary

@@ -2,6 +2,10 @@ from datetime import datetime
 from flask import Blueprint, render_template, request
 from models import Diary
 from models.Mood import Mood
+<<<<<<< Updated upstream
+=======
+from models.meal import Meal
+>>>>>>> Stashed changes
 from models.ToDo import ToDo
 from models.Weight import Weight
 
