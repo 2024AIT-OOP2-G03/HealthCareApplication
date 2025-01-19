@@ -2,7 +2,7 @@ from peewee import SqliteDatabase
 from .db import db
 from .Diary import Diary
 from.Mood import Mood
-from .Meal import Meal
+from .meal import Meal
 from .ToDo import ToDo
 from .Sleep import Sleep
 from .Home_sleep import Home_sleep
