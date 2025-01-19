@@ -44,14 +44,26 @@
             {% else %}
             <p>気分が選択されていません。</p>
             {% endif %}
+          <h2>食べたもの</h2>
+          {% if meal %}
+            {% for meal in meal %}
+              <p>{{ meal.meal }},{{ meal.calorie }}kcal</p>
+            {% endfor %}
+          {% else %}
+            <p>食べ物が記録されていません。</p>
+          {% endif %}
           <h2>ToDo</h2>
-          {% for todo in todo %}
-            <li>
+          {% if todo %}
+            {% for todo in todo %}
+              <li>
                 <a class="todo" href="{{ url_for('todo.edit', ToDo_id=todo.id, year=year, month=month, day=day) }}">
                 {{ todo.todo }}
                 </a><br>
-            </li>
-          {% endfor %}
+              </li>
+            {% endfor %}
+          {% else %}
+            <p>期間中のToDoはありません。</p>
+          {% endif %}
           <h2>睡眠時間</h2>
           <p>{{ sleeptime }}</p>
           <h2>体重</h2>
