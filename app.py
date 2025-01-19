@@ -75,9 +75,10 @@ def sleep_list():
             )
 
     # JSON変換用に辞書形式でデータを返す
+    # .order_by(Home_sleep.date.asc()でリストを日付順に並べている
     return [
         {"sleeptime": home_sleep.sleeptime, "date": home_sleep.date}
-        for home_sleep in Home_sleep.select()
+        for home_sleep in Home_sleep.select().order_by(Home_sleep.date.asc())
     ]
 
 def calculate_sleeptime(sleeps,sleeptime_h):
