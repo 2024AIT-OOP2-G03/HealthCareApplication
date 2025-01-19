@@ -24,8 +24,6 @@ def add():
 
 @meal_bp.route('/edit/<int:Meal_id>/<string:day>', methods=['GET', 'POST'])
 def edit(Meal_id, day):
-    # 日付を取得
-    day = request.args.get('day')
 
     meal = Meal.get_or_none(Meal.id == Meal_id)
     if not meal:
