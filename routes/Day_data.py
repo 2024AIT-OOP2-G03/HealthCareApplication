@@ -35,7 +35,7 @@ def day_data():
         record =Mood.get_or_none(Mood.day==day)
         mood=record.mood if record else "データがありません"
         
-         # レコードを取得（存在しない場合は None を返す）
+        # レコードを取得（存在しない場合は None を返す）
         record = Meal.get_or_none(Meal.day == day)
 
         if record:  # レコードが存在する場合
