@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>カレンダー</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/BaseStyle.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         table {
@@ -27,6 +27,7 @@
 </head>
 <body>
     <h1>{{ year }}年{{ month }}月のカレンダー</h1>
+    <div class="content">
     <table>
         <thead>
             <tr>
@@ -80,7 +81,6 @@
         </tbody>
     </table>
 
-
      <!-- 睡眠棒グラフ用 -->
     <!-- PythonデータをJavaScriptに渡す -->
     <div>
@@ -90,7 +90,7 @@
     <script>
         const sleepData = JSON.parse('{{ sleepdata | tojson | safe }}');
     </script>
-    <script src="{{ url_for('static', filename='bar-chart.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bar-chart.js') }}"></script>
 
 
     <!--   以下体重グラフ -->
@@ -133,6 +133,6 @@
             }
         });
     </script>
-
+</div>
 </body>
 </html>

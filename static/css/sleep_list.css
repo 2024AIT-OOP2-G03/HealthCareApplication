@@ -1,0 +1,131 @@
+/* 全体設定 */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* ヘッダーのスタイル */
+h1 {
+    background-color: #ff9900;
+    color: white;
+    padding: 15px;
+    text-align: l;
+    margin: 0;
+}
+
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    margin-left: 20%;
+  }
+  
+th, td {
+    border: 1px solid #ddd;
+    padding: 6px;
+    text-align: left;
+  }
+  
+th {
+    background-color: #f4f4f4;
+  }
+
+th:nth-child(1), td:nth-child(1) {
+    width: 5%;  /* 最初の列の幅 */
+}
+
+th:nth-child(2), td:nth-child(2) {
+    width: 5%;  /* 2番目の列の幅 */
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 5%;  /* 3番目の列の幅 */
+}
+
+th:nth-child(4), td:nth-child(4) {
+    width: 1%;  /* 4番目の列の幅 */
+}
+
+.breadcrumb {
+    list-style: none;
+    padding: 10px 20px;
+    margin: 0;
+    background-color: #eee;
+    display: flex;
+}
+.breadcrumb li::after {
+    content: " > ";
+  }
+.breadcrumb li:nth-last-child()::after {
+    content: "";
+  }
+
+
+.breadcrumb li {
+    margin-right: 10px;
+}
+
+.breadcrumb li a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.breadcrumb li a:hover {
+    text-decoration: underline;
+}
+
+/* リンクリストのスタイル */
+div.link-list {
+    width: 20%; 
+    background-color: #e9e9e9; 
+    padding: 10px; 
+    position: absolute;
+    top: 128px; 
+    left: 0;
+    height: calc(100vh - 60px);
+}
+
+/* コンテンツ全体の調整 */
+.content {
+    margin-left: 10%; 
+    padding: 20px; 
+}
+
+/* リンクリストのスタイル */
+.link-list ul {
+    list-style-type: none; 
+    margin: 0;
+    padding: 0;
+}
+
+.link-list ul li {
+    margin-bottom: 10px; 
+    text-align: left;
+}
+
+/* リンクのスタイル */
+.link-list ul li a {
+    text-decoration: none; 
+    color: #333; 
+    font-size: 16px; 
+    font-weight: bold; 
+    padding: 5px 10px; 
+    display: block; 
+    border-radius: 5px; 
+}
+
+/* リンクのホバー時のスタイル */
+.link-list ul li a:hover {
+    background-color: #007bff; 
+    color: #fff;
+}
+
+
+p {
+    font-size: 16px;
+    margin: 10px 0;
+}
