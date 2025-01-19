@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/todo_completed.css') }}">
 </head>
 <body>
-    <h1>ToDo編集</h1>
+    <h1>{{ day }}日のToDo編集</h1>
     <ul class="breadcrumb">
         <li><a href="{{ url_for('index') }}">HOME</a></li>
         <li><a href="{{ url_for('day_data.day_data', year=year, month=month, data=day)}}">{{ day }}日のデータ</a></li>
