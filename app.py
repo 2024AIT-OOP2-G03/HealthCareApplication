@@ -117,7 +117,7 @@ def validate_time_format(time_str, fmt):
         return True
     except ValueError:
         return False
-
+#このコメントは削除しても良い。
 
 if __name__ == '__main__':
     initialize_database()
