@@ -6,12 +6,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/weight.css') }}">
 </head>
 <body>
-    <h1>{{ day }}日のデータ</h1>
+    <h1>{{ day }}日体重データを編集</h1>
     <ul class="breadcrumb">
         <li><a href="{{ url_for('index') }}">HOME</a></li>
         <li><a href="{{ url_for('day_data.day_data', data=day)}}">{{ day }}日のデータ</a></li>
         <li><a href="{{ url_for('weight.weight',data=day) }}">{{ day }}日の体重</a></li>
     </ul>
+    
     <div class="link-list">
         <h2>体重を登録</h2>
     </div>

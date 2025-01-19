@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ day }}日に食べたもの</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Meal_list.css') }}">
 </head>
 <body>
     <h1>{{ day }}日の{{ title }}</h1>
@@ -12,10 +12,13 @@
         <li><a href="{{ url_for('day_data.day_data', data=day)}}">{{ day }}日のデータ</a></li>
         <li><a href="{{ url_for('meal.meal', day=day)}}">食べたものリスト</a></li>
     </ul>
-        <li><a href="{{ url_for('meal.meal', day=day) }}">食べたもの一覧</a></li>
+    <div class="link-list">
+        <ul>
+            <li><a href="{{ url_for('meal.add', day=day) }}">食べたものを追加</a></li>
+        </ul>   
+    </div>
 
-    </ul>
-    <a href="{{ url_for('meal.add', day=day) }}">食品追加</a>
+    <div class="content">
     <table>
         <thead>
             <tr>
@@ -34,5 +37,6 @@
             {% endfor %}
         </tbody>
     </table>
+    <div>
 </body>
 </html>

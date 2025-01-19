@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>食べたもの編集</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='BaseStyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Meal_edit.css') }}">
 </head>
 <body>
-    <h1>食べたもの編集</h1>
+    <h1>{{ day }}日の食べたもの編集</h1>
     <ul class="breadcrumb">
         <li><a href="{{ url_for('index') }}">HOME</a></li>
         <li><a href="{{ url_for('day_data.day_data', data=day)}}">{{ day }}日のデータ</a></li>
@@ -14,10 +14,16 @@
         <li>食品の編集</li>
     </ul>
 
+    <div class="link-list">
+        <h2>食べたものを追加</h2>
+    </div>
+
+    <div class="content">
     <form action="{{ url_for('meal.edit', Meal_id=meal.id, day=day) }}" method="post">
         <label>meal: <input type="text" name="meal" value="{{ meal.meal }}" required></label><br>
         <label>カロリー（kcal）: <input type="number" name="calorie" required></label><br>
         <button type="submit">保存</button>
     </form>
+    <div>
 </body>
 </html>
